@@ -13,6 +13,9 @@ base: static
 static:
 	docker build -t universe-static -f Dockerfile.static .
 
+online-static:
+	docker pull justinrlee/universe-static:0.1
+
 clean:
 	rm -rf certs &&							\
 	rm -f local-universe.tar.gz || 0
