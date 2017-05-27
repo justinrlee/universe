@@ -10,7 +10,7 @@ certs:
 base: static
 	docker build -t universe-base -f Dockerfile.base .
 
-static: clean
+static:
 	docker build -t universe-static -f Dockerfile.static .
 
 clean:
