@@ -1,21 +1,21 @@
 REPO_BASE_DIR ?= $(shell pwd -P)/../..
 .PHONY: certs base clean static
 
-certs:
+certs: # Only used for testing
 	mkdir certs && openssl req					\
 		-newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key	\
 		-x509 -days 365 -out certs/domain.crt			\
 		-subj "/CN=master.mesos"
-
-base: static
-	docker build -t universe-base -f Dockerfile.base .
 
 static:
 	docker build -t universe-static -f Dockerfile.static .
 
 online-static:
 	docker pull justinrlee/universe-static:0.1
+	docker tag justinrlee/universe-static:0.1 universe-static
 
+base:
+	docker build -t universe-base -f Dockerfile.base .
 clean:
 	rm -rf certs &&							\
 	rm -f local-universe.tar.gz || 0
