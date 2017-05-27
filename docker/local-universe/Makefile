@@ -1,5 +1,5 @@
 REPO_BASE_DIR ?= $(shell pwd -P)/../..
-.PHONY: certs base clean
+.PHONY: certs base clean static
 
 certs:
 	mkdir certs && openssl req					\
@@ -7,8 +7,11 @@ certs:
 		-x509 -days 365 -out certs/domain.crt			\
 		-subj "/CN=master.mesos"
 
-base: clean certs
+base: static
 	docker build -t universe-base -f Dockerfile.base .
+
+static: clean
+	docker build -t universe-static -f Dockerfile.static .
 
 clean:
 	rm -rf certs &&							\
