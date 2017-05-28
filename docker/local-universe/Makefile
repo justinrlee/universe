@@ -16,6 +16,7 @@ online-static:
 
 base:
 	docker build -t universe-base -f Dockerfile.base .
+	
 clean:
 	rm -rf certs &&							\
 	rm -f local-universe.tar.gz || 0
