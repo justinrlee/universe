@@ -155,6 +155,9 @@ def enumerate_dcos_packages(packages_path, package_names, only_selected):
     :rtype: gen((str, str))
     """
 
+    print(package_names)
+    print(only_selected)
+
     for letter_path in packages_path.iterdir():
         assert len(letter_path.name) == 1 and letter_path.name.isupper()
         for package_path in letter_path.iterdir():
