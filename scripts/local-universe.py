@@ -165,14 +165,18 @@ def enumerate_dcos_packages(packages_path, package_names, only_selected):
         assert len(letter_path.name) == 1 and letter_path.name.isupper()
 
         for package_path in letter_path.iterdir():
+            print("package_path")
             print(package_path)
+            print("package_path.name")
             print(package_path.name)
             
             # Short circuit if package list is empty and no selected: return all
             if not package_names and not only_selected:
                 largest_revision = get_largest_revision(package_path)
-                yield (package_path.name, largest_revision)    
-        
+                yield (package_path.name, largest_revision)
+            
+            
+
             largest_revision = get_largest_revision(package_path)
 
             print("largest:")
