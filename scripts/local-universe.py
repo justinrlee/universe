@@ -78,7 +78,7 @@ def main():
         else:
             if package_name not in versioned_names:
                 versioned_names[package_name] = []
-            versioned_names[package_namename].append('latest')
+            versioned_names[package_name].append('latest')
     
     print(versioned_names)
 
