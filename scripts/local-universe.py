@@ -135,7 +135,7 @@ def main():
                 handle_package,
                 enumerate_dcos_packages(
                     pathlib.Path(args.repository),
-                    package_names,
+                    versioned_names,
                     args.selected)):
                 print("Completed: {}".format(package))
 
@@ -191,7 +191,19 @@ def enumerate_dcos_packages(packages_path, package_names, only_selected):
                 largest_revision = get_largest_revision(package_path)
                 yield (package_path.name, largest_revision)
             
+            # if package_path.name in package_names:
+            #     for 
+
             
+            # for each package
+            #     if package in package names
+            #         if version specified:
+            #             get specific version
+            #         else
+            #             get latest version
+            #     else if selected
+            #         get latest version
+            #             determine if latest version is selected
 
             largest_revision = get_largest_revision(package_path)
 
