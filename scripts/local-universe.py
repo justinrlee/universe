@@ -175,6 +175,7 @@ def enumerate_dcos_packages(packages_path, package_names, only_selected):
         
             largest_revision = get_largest_revision(package_path)
 
+            print("largest:")
             print(largest_revision)
 
             if only_selected:
