@@ -166,6 +166,8 @@ def enumerate_dcos_packages(packages_path, package_names, only_selected):
                 package_path.iterdir(),
                 key=lambda revision: int(revision.name))
 
+            print(largest_revision)
+
             if only_selected:
                 json_path = largest_revision / 'package.json'
                 with json_path.open(encoding='utf-8') as json_file:
@@ -177,7 +179,7 @@ def enumerate_dcos_packages(packages_path, package_names, only_selected):
 
             elif not package_names or package_path.name in package_names:
                 # Enumerate package if list is empty or package name in list
-                print("Yielding selected")
+                print("Yielding individually chosen")
                 print(package_path.name)
                 print(largest_revision)
                 yield (package_path.name, largest_revision)
