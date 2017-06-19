@@ -139,7 +139,7 @@ def main():
             print("Errors: {}".format(failed_packages))
             print("These packages are not included in the image.")
 
-def largest_revision(package_path):
+def get_largest_revision(package_path):
     return max(package_path.iterdir(),
         key=lambda revision: int(revision.name))
 
@@ -167,9 +167,7 @@ def enumerate_dcos_packages(packages_path, package_names, only_selected):
             print(package_path)
             print(package_path.name)
 
-            largest_revision = max(
-                package_path.iterdir(),
-                key=lambda revision: int(revision.name))
+            largest_revision = get_largest_revision(package_path)
 
             print(largest_revision)
 
