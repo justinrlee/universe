@@ -67,6 +67,22 @@ def main():
 
     package_names = [name for name in args.include.split(',') if name != '']
 
+    versioned_names = {}
+
+    for package_name in package_names:
+        if ':' in package_name:
+            name, version = package_name.split(':')
+            if name not in versioned_names:
+                versioned_names[name] = []
+            versioned_names[name].append(version)
+        else:
+            if name not in versioned_names:
+                versioned_names[name] = []
+            versioned_names[name].append('latest')
+    
+    print(versioned_names)
+
+
     with tempfile.TemporaryDirectory() as dir_path, \
             run_docker_registry(dir_path / pathlib.Path("registry")):
 
