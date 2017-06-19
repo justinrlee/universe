@@ -161,6 +161,8 @@ def enumerate_dcos_packages(packages_path, package_names, only_selected):
     for letter_path in packages_path.iterdir():
         assert len(letter_path.name) == 1 and letter_path.name.isupper()
         for package_path in letter_path.iterdir():
+            print(package_path)
+            print(package_path.name)
 
             largest_revision = max(
                 package_path.iterdir(),
